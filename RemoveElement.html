@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerênciamento de funcionários</title>
+</head>
+<body>
+    <h1>Form</h1>
+    <p>Insert the data</p>
+    <form action="" id="formulario">
+
+    
+        <label for="
+        segment">What segment ? <br><input type="radio" id="manager" name="
+        segment" onclick="addData()" >Management <input type="radio" id="dev" name="
+        segment" onclick="addData()" >Development</label><br>
+        <div id="department"></div>
+        <div id="language"></div>
+    </form>
+
+    <label for="submit"><input type="submit" id="submit" name="submit"></label>
+
+
+<script>
+
+
+    function addData(){
+
+        var department = document.getElementById('department')
+        var language = document.getElementById('language')
+
+        if(document.getElementById('manager').checked){
+            
+            var newField = document.createElement('input')
+            var newLab = document.createElement('label')
+            newField.type ="text"
+            newField.id='dep'
+            newLab.innerHTML="what department <br>"
+            department.appendChild(newLab)
+            newLab.appendChild(newField)      
+
+        } 
+        
+        
+        if(document.getElementById('dev').checked){
+
+            var newField = document.createElement('input')
+            var newLab = document.createElement('label')
+            newField.type ="text"
+            newField.id='lang'
+            newLab.innerHTML=" Qual a linguagem de programação em que trabalha?<br>"
+            language.appendChild(newLab)
+            newLab.appendChild(newField) 
+    
+        }       
+        
+        if(document.getElementById('manager').checked){
+            language.remove()
+        }
+        if(document.getElementById('dev').checked){
+            department.remove()
+        }
+
+    
+
+    }
+
+    
+        
+    
+    
+    class funcionario{
+
+        constructor(nome,idade,cargo){
+        this.nome = nome;
+        this.idade = idade;
+        this.cargo = cargo;
+        }
+
+        seApresentar(){
+        console.log(`Eu sou o funcionário ${this.nome}, tenho ${this.idade} anos e trabalho como ${this.cargo}`);
+        }
+
+        trabalhar(){
+
+        console.log(`Irei começar agora meu trabalho como ${this.cargo}`);
+        }
+
+    }
+
+    class gerente extends funcionario {
+
+        constructor(nome,idade,cargo,departamento){
+            super(nome,idade,cargo);
+            this.departamento = departamento;
+        }
+
+        gerenciar(){
+            console.log(`Gerenciando agora os projetos no departamento de ${this.departamento}`);
+        }
+    }
+
+
+    </script>
+    
+</body>
+</html>
